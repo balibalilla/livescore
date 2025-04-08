@@ -34,7 +34,7 @@ const competicionesValidas = [
 export async function getPartidosPorCompeticion() {
 const browser = await puppeteer.launch({
   headless: 'new',
-  executablePath: '/usr/bin/google-chrome',
+  executablePath: '/usr/bin/chromium-browser',
   args: ['--no-sandbox', '--disable-setuid-sandbox']
 });
   const page = await browser.newPage();
