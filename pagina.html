@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Partidos de hoy</title>
+</head>
+<body>
+  <h1>📅 Partidos Importantes</h1>
+  <ul id="lista"></ul>
+
+  <script>
+    fetch('/api/partidos')
+      .then(res => res.json())
+      .then(partidos => {
+        const lista = document.getElementById('lista');
+        partidos.forEach(p => {
+          const li = document.createElement('li');
+          li.innerHTML = `
+            <strong>${p.hora} - ${p.partido}</strong> (${p.competencia})<br/>
+            <a href="${p.enlacePartido}" target="_blank">Ver en LiveSoccerTV</a><br/>
+            <em>${p.canales.join('<br/>') || 'Sin canales disponibles'}</em><hr/>
+          `;
+          lista.appendChild(li);
+        });
+      });
+  </script>
+</body>
+</html>
