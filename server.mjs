@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname));
 
@@ -25,6 +25,6 @@ app.get('/api/partidos', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Servidor ejecutándose en http://localhost:${PORT}`);
+app.listen(port, () => {
+  console.log(`🚀 Servidor ejecutándose en http://localhost:${port}`);
 });
