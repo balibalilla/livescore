@@ -5,8 +5,7 @@
   "main": "server.mjs",
   "type": "module",
   "scripts": {
-    "start": "node server.mjs",
-    "postinstall": "npx puppeteer browsers install chrome"
+    "start": "node server.mjs"
   },
   "keywords": [],
   "author": "",
