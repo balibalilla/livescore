@@ -1,4 +1,4 @@
-import { executablePath } from 'puppeteer';
+import chromium from 'chrome-aws-lambda';
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import pLimit from 'p-limit';
@@ -34,10 +34,13 @@ const competicionesValidas = [
 
 export async function getPartidosPorCompeticion() {
 const browser = await puppeteer.launch({
-  headless: 'new',
-  executablePath: executablePath(),
-  args: ['--no-sandbox', '--disable-setuid-sandbox']
+  headless: true,
+  executablePath: await chromium.executablePath,
+  args: chromium.args,
+  defaultViewport: chromium.defaultViewport,
+  ignoreHTTPSErrors: true
 });
+
   const page = await browser.newPage();
 
   const hoy = new Date();
