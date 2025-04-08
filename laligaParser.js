@@ -1,3 +1,4 @@
+import { executablePath } from 'puppeteer';
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import pLimit from 'p-limit';
@@ -34,9 +35,9 @@ const competicionesValidas = [
 export async function getPartidosPorCompeticion() {
 const browser = await puppeteer.launch({
   headless: 'new',
+  executablePath: executablePath(),
   args: ['--no-sandbox', '--disable-setuid-sandbox']
 });
-
   const page = await browser.newPage();
 
   const hoy = new Date();
